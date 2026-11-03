@@ -182,22 +182,13 @@ pip install -r requirements.txt
 
 **For macOS:**
 
-Apple Silicon (M1 through M5) requires specific setup:
+Start the app from the repository root with the macOS launcher:
 
 ```bash
-# Install Python 3.14
-brew install python@3.14
-
-# Install tkinter package (required for the GUI)
-brew install python-tk@3.14
-
-# Create and activate virtual environment with Python 3.14
-python3.14 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
+./run-mac.sh
 ```
+
+Homebrew must already be installed. On first run, the script installs missing Python 3.14, Tk support, or `ffmpeg` through Homebrew, creates `venv/`, and installs project dependencies. On Apple Silicon it uses the CoreML execution provider when available, and the app downloads its required models on first launch. Preview setup without making changes with `./run-mac.sh --dry-run`. You can pass normal `run.py` options after the script name; an explicit `--execution-provider` overrides the Apple Silicon default.
 
 ** In case something goes wrong and you need to reinstall the virtual environment **
 
